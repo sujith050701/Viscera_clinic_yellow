@@ -21,7 +21,7 @@ function Footer() {
             
             <div className="col-lg-4 col-md-6">
               <h3 className="text-white mb-4">Get In Touch</h3>
-              <p className="mb-2"><i className="bi bi-geo-alt text-primary me-2" />No.29, vaithiyanathapuram , Ellis Nagar, s s colony, Madurai Tamil Nadu
+              <p className="mb-2"><i className="bi bi-geo-alt text-primary me-2" />No.29A, vaithiyanathapuram , Ellis Nagar, SS colony, Madurai Tamil Nadu
 
 Madurai Tamil Nadu
 India - 625016</p>

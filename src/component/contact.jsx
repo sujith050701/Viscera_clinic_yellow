@@ -59,7 +59,7 @@ function ContactPage() {
                                         <i className="bi bi-geo-alt fs-1 text-primary me-3" />
                                         <div className="text-start">
                                             <h5 className="mb-0">Our Office</h5>
-                                            <span>No.29, Vaithiyanathapuram, Ellis Nagar, S S Colony, Madurai, Tamil Nadu, India - 625016</span>
+                                            <span>No.29A, Vaithiyanathapuram, Ellis Nagar, SS colony, Madurai, Tamil Nadu, India - 625016</span>
                                         </div>
                                     </div>
                                     <div className="d-flex align-items-center mb-2">

@@ -41,7 +41,7 @@ function Contentthree() {
             <div className="col-lg-4 wow zoomIn" data-wow-delay="0.6s">
               <div className=" d-flex flex-column p-5" style={{ "height": "300px", backgroundColor: "#8E6127" }}>
                 <h3 className="text-white mb-3">Contact Info</h3>
-                <p className="text-white">No.29, vaithiyanathapuram , Ellis Nagar, s s colony, Madurai Tamil Nadu
+                <p className="text-white">No.29A, vaithiyanathapuram , Ellis Nagar, SS colony, Madurai Tamil Nadu
 
                   Madurai Tamil Nadu
                   India - 625016</p>

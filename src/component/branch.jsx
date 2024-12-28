@@ -19,7 +19,7 @@ const branches = [
   {
     id: 1,
     name: "Madurai Branch",
-    address: "No.29a, Vaithiyanathapuram, Ellis Nagar, S S Colony, Madurai, Tamil Nadu, India - 625016",
+    address: "No.29Aa, Vaithiyanathapuram, Ellis Nagar, SS colony, Madurai, Tamil Nadu, India - 625016",
     timings: "10 AM to 8 PM",
     days: "Monday, Tuesday, Thursday, Friday (All weeks)",
   },
