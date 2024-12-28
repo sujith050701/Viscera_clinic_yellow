@@ -1,0 +1,68 @@
+.product-card {
+    overflow: hidden;
+    position: relative;
+    background: #fff;
+    border-radius: 15px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.1);
+}
+
+.image-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px 15px 0 0;
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.image-wrapper:hover .image-overlay {
+    opacity: 1;
+}
+
+.skeleton-loader {
+    height: 250px;
+    background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: -100%; }
+    100% { background-position: 100%; }
+}
+
+
+.product-container {
+    position: relative;
+    overflow: visible;
+    z-index: 1;
+}
+
+body {
+    overflow-x: hidden; /* Prevent horizontal scrolling issues */
+}
+html {
+    scroll-behavior: smooth;
+}

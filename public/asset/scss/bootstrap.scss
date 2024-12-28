@@ -1,0 +1,41 @@
+/******* Customized Bootstrap ********/
+
+$primary: #c7bf34;
+$secondary: #345fa6;
+$light: #EEF9FF;
+$dark: #091E3E;
+
+$font-family-base: 'Open Sans', sans-serif;
+
+$headings-font-family: 'Jost', sans-serif;
+
+$body-bg: #FFFFFF;
+
+$body-color: #6B6A75;
+
+$headings-color: $dark;
+
+$display-font-weight: 700;
+
+$enable-responsive-font-sizes: true;
+
+$border-radius: 2px;
+
+$link-decoration: none;
+
+$enable-negative-margins: true;
+
+@import "bootstrap/scss/bootstrap";
+
+// Set all text color to #345fa6
+body, 
+h1, h2, h3, h4, h5, h6, 
+p, 
+a, 
+span, 
+div, 
+label, 
+input, 
+textarea {
+    color: #345fa6; /* Updated text color */
+}
