@@ -1,76 +1,108 @@
-import React from 'react';
-import { useState ,useEffect} from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import TestHead from './heading/testhead';
 
 const Testimonial = () => {
-    const testimonials = [
-        {
-            id: 1,
-            name: "Sarah Johnson",
-            role: "Patient",
-            image: "/images/patient1.jpg",
-            text: "The care I received at this hospital was exceptional. The medical staff was not only highly professional but also incredibly compassionate. They made my recovery journey much easier.",
-        },
-        {
-            id: 2,
-            name: "Dr. Michael Chen",
-            role: "Referring Physician",
-            image: "/images/doctor1.jpg",
-            text: "As a referring physician, I've consistently seen excellent outcomes for my patients at this hospital. Their integrated approach to healthcare and state-of-the-art facilities are impressive.",
-        },
-        {
-            id: 3,
-            name: "Emily Rodriguez",
-            role: "Family Member",
-            image: "/images/family1.jpg",
-            text: "During my mother's extended stay, the staff went above and beyond to keep our family informed and comfortable. Their dedication to patient care is truly remarkable.",
-        }
-    ];
     useEffect(() => {
         window.scrollTo(0, 0);
-      }, []);
+    }, []);
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [userFeedback, setUserFeedback] = useState("");
+    const [allTestimonials, setAllTestimonials] = useState([]);
+    const [userImage, setUserImage] = useState(null);
+    const intervalRef = useRef(null);
+
+    const handleFeedbackChange = (event) => {
+        setUserFeedback(event.target.value);
+    };
+
+    const handleImageChange = (event) => {
+        setUserImage(event.target.files[0]);
+    };
+
+    const handleFeedbackSubmit = (event) => {
+        event.preventDefault();
+        const newTestimonial = {
+            id: allTestimonials.length + 1,
+            image: userImage ? URL.createObjectURL(userImage) : "/images/default_user.jpg",
+            text: userFeedback,
+        };
+        setAllTestimonials([...allTestimonials, newTestimonial]);
+        setUserFeedback("");
+        setUserImage(null);
+        document.querySelector('input[type="file"]').value = "";
+    };
 
     const nextTestimonial = () => {
         setCurrentIndex((prevIndex) => 
-            prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
+            allTestimonials.length > 0 ? (prevIndex === allTestimonials.length - 1 ? 0 : prevIndex + 1) : 0
         );
     };
 
     const prevTestimonial = () => {
         setCurrentIndex((prevIndex) => 
-            prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
+            allTestimonials.length > 0 ? (prevIndex === 0 ? allTestimonials.length - 1 : prevIndex - 1) : 0
         );
+    };
+
+    const handleFeedbackDelete = (index) => {
+        setAllTestimonials((prevTestimonials) => 
+            prevTestimonials.filter((_, i) => i !== index)
+        );
+    };
+
+    useEffect(() => {
+        intervalRef.current = setInterval(nextTestimonial, 3000);
+
+        return () => clearInterval(intervalRef.current);
+    }, [allTestimonials]);
+
+    const handleMouseEnter = () => {
+        clearInterval(intervalRef.current);
+    };
+
+    const handleMouseLeave = () => {
+        intervalRef.current = setInterval(nextTestimonial, 3000);
     };
 
     return (
         <>
         <TestHead/>
-        <section className="testimonial-section">
+        <section className="testimonial-section" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             <div className="container">
-                <h2 className="section-title">What Our Patients Says</h2>
+                <h2 className="section-title">User Feedback</h2>
                 <div className="testimonial-carousel">
                     <button className="nav-button prev" onClick={prevTestimonial}>
                         &lt;
                     </button>
                     <div className="testimonial-card">
                         <div className="testimonial-image">
-                           
+                            <img src={allTestimonials.length > 0 && allTestimonials[currentIndex].image ? allTestimonials[currentIndex].image : '/images/default_user.jpg'} alt="User" />
                         </div>
                         <div className="testimonial-content">
                             <p className="testimonial-text">
-                                "{testimonials[currentIndex].text}"
+                                "{allTestimonials.length > 0 ? allTestimonials[currentIndex].text : 'No feedback yet.'}"
                             </p>
                             <div className="testimonial-author">
-                                <h4>{testimonials[currentIndex].name}</h4>
-                                <p>{testimonials[currentIndex].role}</p>
+                                <h4>{allTestimonials.length > 0 ? allTestimonials[currentIndex].name : 'Anonymous'}</h4>
+                                <p>{allTestimonials.length > 0 ? allTestimonials[currentIndex].role : 'User Feedback'}</p>
                             </div>
+                            <button onClick={() => handleFeedbackDelete(currentIndex)} className="delete-feedback-button">Delete Feedback</button>
                         </div>
                     </div>
                     <button className="nav-button next" onClick={nextTestimonial}>
                         &gt;
                     </button>
                 </div>
+                <form onSubmit={handleFeedbackSubmit}>
+                    <input type="file" accept="image/*" onChange={handleImageChange} required />
+                    <textarea 
+                        value={userFeedback} 
+                        onChange={handleFeedbackChange} 
+                        placeholder="Leave your feedback here..." 
+                        required 
+                    />
+                    <button type="submit" className="btn-custom">Submit Feedback</button>
+                </form>
             </div>
         </section></>
     );

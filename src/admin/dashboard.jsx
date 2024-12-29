@@ -15,6 +15,7 @@ const Dashboard = () => {
     service: '',
     branch: '',
     date: '',
+    time: '',
     email: '',
     mobile: ''
   });
@@ -31,7 +32,7 @@ const Dashboard = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     axios
-      .get('http://192.168.136.4:6009/api/appointments/get')
+      .get('http://192.168.136.4:4001/api/appointments/get')
       .then((response) => {
         setAppointments(response.data.data);
         setLoading(false);
@@ -45,7 +46,7 @@ const Dashboard = () => {
   const handleDelete = (userId) => {
     if (window.confirm('Are you sure you want to delete this appointment?')) {
       axios
-        .delete(`http://192.168.136.4:6009/api/appointments/delete/${userId}`)
+        .delete(`http://192.168.136.4:4001/api/appointments/delete/${userId}`)
         .then((response) => {
           if (response.status === 200 || response.status === 204) {
             setAppointments((prevAppointments) =>
@@ -66,7 +67,7 @@ const Dashboard = () => {
   const handleDeleteAll = () => {
     if (window.confirm('Are you sure you want to delete all appointments?')) {
       axios
-        .delete('http://192.168.136.4:6009/api/appointments/delete/all')
+        .delete('http://192.168.136.4:4001/api/appointments/delete/all')
         .then((response) => {
           if (response.status === 200 || response.status === 204) {
             setAppointments([]);
@@ -87,10 +88,11 @@ const Dashboard = () => {
 
     if (
       !editFormData.name ||
-      !editFormData.practitioner ||
+   
       !editFormData.service ||
       !editFormData.branch ||
       !editFormData.date ||
+      !editFormData.time ||
       !editFormData.email ||
       !editFormData.mobile
     ) {
@@ -103,7 +105,7 @@ const Dashboard = () => {
     const updatedAppointment = { ...editFormData, date: formattedDate };
 
     axios
-      .put(`http://192.168.136.4:6009/api/appointments/update/${editAppointment._id}`, updatedAppointment)
+      .put(`http://192.168.136.4:4001/api/appointments/update/${editAppointment._id}`, updatedAppointment)
       .then((response) => {
         setAppointments((prevAppointments) =>
           prevAppointments.map((app) =>
@@ -248,15 +250,6 @@ const Dashboard = () => {
               />
             </label>
             <label>
-              Doctor:
-              <input
-                type="text"
-                name="practitioner"
-                value={editFormData.practitioner}
-                onChange={handleEditFormChange}
-              />
-            </label>
-            <label>
               Service:
               <input
                 type="text"
@@ -279,7 +272,16 @@ const Dashboard = () => {
               <input
                 type="date"
                 name="date"
-                value={formatDate(editFormData.date)} // Ensure the date is formatted correctly
+                value={formatDate(editFormData.date)}
+                onChange={handleEditFormChange}
+              />
+            </label>
+            <label>
+              Time:
+              <input
+                type="time"
+                name="time"
+                value={editFormData.time}
                 onChange={handleEditFormChange}
               />
             </label>

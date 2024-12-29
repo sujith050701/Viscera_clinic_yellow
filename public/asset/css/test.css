@@ -93,3 +93,31 @@
         gap: 1rem;
     }
 }
+
+.btn-custom {
+    background-color: #afab2e;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-custom:hover {
+    background-color: #27548e;
+}
+
+.delete-feedback-button {
+    background-color: #afab2e;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.delete-feedback-button:hover {
+    background-color: #27548e;
+}

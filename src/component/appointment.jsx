@@ -63,7 +63,7 @@ function Appointment() {
 
         try {
             const response = await axios.post(
-                "http://192.168.136.4:6009/api/appointments/create",
+                "http://192.168.136.4:4001/api/appointments/create",
                 appointmentData,
                 {
                     headers: {
