@@ -58,18 +58,9 @@ const HospitalBranches = () => {
   const isHomePage = location.pathname === "/";
 
   const handleContactClick = (branchId) => {
-    // Define a mapping of branch IDs to phone numbers
-    const phoneNumbers = {
-      1: "+918925168697", // Madurai Branch
-      2: "+918925168698", // Trichy Branch
-      3: "+918925168699", // Coimbatore Branch
-      4: "+918925168700", // Chennai Branch
-      5: "+918925168701", // Kerala Branch
-    };
-
-    // Get the phone number based on the branch ID
-    const phoneNumber = phoneNumbers[branchId] || "+918925168697"; // Default number if branchId not found
-    window.location.href = `tel:${phoneNumber}`;
+    // Use a single phone number for all branches
+    const phoneNumber = "+918925168697"; // Updated to a single number
+    window.location.href = `tel:${phoneNumber}`; // This should open the dialer with the number
   };
 
   useEffect(() => {

@@ -18,7 +18,7 @@ function Topbar() {
           <div className="col-12 col-md-8 text-center text-lg-end">
             <div
               className="d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-end bg-primary text-white top-shape px-3 px-md-5 text-nowrap"
-              style={{ minHeight: "50px", width: "100%", flexWrap: 'wrap', backgroundColor: 'yellow' }}
+              style={{ minHeight: "30px", width: "100%", flexWrap: 'wrap', backgroundColor: 'yellow' }}
             >
               {/* Email */}
               <div className="d-flex align-items-center me-3 py-2">
