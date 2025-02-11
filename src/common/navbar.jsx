@@ -32,7 +32,7 @@ function Navbar() {
                             <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Categories
                             </a>
-                            <ul className="dropdown-menu dropdown-menu-end" style={{ display: 'none' }}>
+                            <ul className="dropdown-menu dropdown-menu-end" >
                                 <li><Link className="dropdown-item" to="/branch" onClick={closeNavbar}>Branches</Link></li>
                                 <li><Link className="dropdown-item" to="/gallery" onClick={closeNavbar}>Gallery</Link></li>
                                 <li><Link className="dropdown-item" to="/testimonial" onClick={closeNavbar}>Testimonials</Link></li>

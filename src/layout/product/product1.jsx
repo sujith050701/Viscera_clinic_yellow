@@ -1,6 +1,5 @@
 import React from "react";
 import { Card, Carousel } from "react-bootstrap";
-import ProductHead from "./heading/producthead";
 
 function Product() {
     const products = [
@@ -60,19 +59,19 @@ function Product() {
 
     return (
         <>
-            <ProductHead />
+            
             {/* Product Section Start */}
             <div className="container-fluid py-5">
                 <div className="container">
                     <div className="row g-5">
                         {/* Section Title */}
                         <div className="col-lg-12 text-center mb-4">
-                            <h5 className="text-primary text-uppercase">Our Products</h5>
+                            <h5 className=" text-uppercase" style={{  color: "rgba(39, 84, 142, 0.9)"}}>Our Products</h5>
                             <h1 className="display-6">Explore Our Exclusive Products</h1>
                         </div>
 
                         {/* Carousel for Product Cards */}
-                        <Carousel className="product-carousel" interval={3000} pause="hover" controls={false}>
+                        <Carousel className="product-carousel" interval={2000} pause="hover" controls={false}>
                             {products.map((product, index) => (
                                 <Carousel.Item key={index} className="text-center">
                                     <Card className="product-card border-0 shadow-sm rounded mx-auto">

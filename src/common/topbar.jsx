@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 function Topbar() {
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 1024);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth > 1024);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  if (!isLargeScreen) return null; // Do not render on small screens
+
   return (
     <>
       {/* Topbar Start */}
@@ -15,34 +30,41 @@ function Topbar() {
               </small>
             </div>
           </div>
-          <div className="col-12 col-md-8 text-center text-lg-end">
+          <div className="col-12 col-md-8 text-center text-lg-end top">
             <div
-              className="d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-end bg-primary text-white top-shape px-3 px-md-5 text-nowrap"
-              style={{ minHeight: "30px", width: "100%", flexWrap: 'wrap', backgroundColor: 'yellow' }}
+              className="d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-end bg-primary text-white px-3 px-lg-5 text-nowrap"
+              style={{
+                minHeight: "30px",
+                width: "100%",
+                flexWrap: "wrap",
+                backgroundColor: "yellow",
+              }}
             >
               {/* Email */}
               <div className="d-flex align-items-center me-3 py-2">
-                <i className="fa fa-envelope-open me-2" />
-                <span className="text-nowrap" style={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
+                <i
+                  className="fa fa-envelope-open me-2 ic"
+                  style={{ position: "relative", right: "2cm" }}
+                />
+                <span
+                  className="text-nowrap ic"
+                  style={{
+                    overflow: "hidden",
+                    whiteSpace: "nowrap",
+                    position: "relative",
+                    right: "1.8cm",
+                  }}
+                >
                   visceranaturalsclinicpvtltd@gmail.com
                 </span>
-              </div>
-              
-              {/* Vertical Divider */}
-             
-
-              {/* Phone */}
-              <div className="d-flex align-items-center me-3 py-2">
-                <i className="fa fa-phone-alt me-2" />
-                <span>+91 8925168697</span>
               </div>
 
               {/* User Login Button */}
               <div className="py-2">
                 <Link
                   className="btn btn-secondary btn-sm px-3 text-nowrap"
-                  to="/login"
-                  style={{ backgroundColor: 'rgba(39, 84, 142, 0.9)' }}
+                  to="/userlogin"
+                  style={{ backgroundColor: "rgba(39, 84, 142, 0.9)" }}
                 >
                   User Login
                 </Link>
@@ -52,15 +74,6 @@ function Topbar() {
         </div>
       </div>
       {/* Topbar End */}
-      <style>
-        {`
-          @media (max-width: 768px) {
-            .top-shape {
-              background-color: yellow;
-            }
-          }
-        `}
-      </style>
     </>
   );
 }

@@ -29,7 +29,7 @@ India - 625016</p>
               </p>
               <p className="mb-0"><i className="bi bi-telephone text-primary me-2" />+91 8925168697</p>
             </div>
-            <div className="col-lg-4 col-md-12">
+            {/* <div className="col-lg-4 col-md-12">
               <h3 className="text-white mb-4">Follow Us</h3>
               <div className="d-flex mb-4">
                 <a href="#" className="btn btn-lg btn-primary btn-lg-square rounded me-2"><i className="fab fa-twitter fw-normal"></i></a>
@@ -38,7 +38,7 @@ India - 625016</p>
                 <a href="#" className="btn btn-lg btn-primary btn-lg-square rounded"><i className="fab fa-instagram fw-normal"></i></a>
               </div>
               
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

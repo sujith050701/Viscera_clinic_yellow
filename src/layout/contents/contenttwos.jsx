@@ -18,7 +18,7 @@ function ContentTwo() {
                         <div className="carousel-item active">
                             <img
                                 className="w-100"
-                                src="/asset/img/carousel-1.jpg"
+                                src="/asset/img/carousel-2.jpg"
                                 alt="image"
                             />
                             <div className="carousel-caption d-flex flex-column align-items-center justify-content-center">
@@ -53,7 +53,7 @@ function ContentTwo() {
                         <div className="carousel-item">
                             <img
                                 className="w-100"
-                                src="/asset/img/carousel-2.jpg"
+                                src="/asset/img/carousel-1.jpg"
                                 alt="image"
                             />
                             <div className="carousel-caption d-flex flex-column align-items-center justify-content-center">

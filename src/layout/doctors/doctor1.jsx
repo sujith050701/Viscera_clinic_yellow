@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import DoctorHead from "./heading/doctorhead";
 import { useLocation, Link } from "react-router-dom";
 
 function Doctor() {
@@ -29,18 +28,19 @@ function Doctor() {
 
     return (
         <>
-            {!isHomePage && <DoctorHead />}
 
-            {/* Admin Panel Button - Only show when not on home page */}
             {!isHomePage && (
                 <div className="container-fluid py-3">
                     <div className="container">
                         <div className="text-end">
-                            <Link to="/adminlogin" className="btn" style={{ backgroundColor: "rgba(39, 84, 142, 0.9)", color: "#fff" }}>Admin Panel</Link>
+                            <Link to="/adminlogin" className="btn" style={{ backgroundColor: "rgba(39, 84, 142, 0.9)", color: "#fff" }}>
+                                Admin Panel
+                            </Link>
                         </div>
                     </div>
                 </div>
             )}
+
 
             {/* Team Section Start */}
             <div className="container-fluid py-5">
@@ -76,16 +76,16 @@ function Doctor() {
                                 className="col-lg-4 wow slideInUp"
                                 data-wow-delay={`${0.1 + index * 0.2}s`}
                             >
-                                <div className="team-item">
+                                <div className="team-item fixed-height">
                                     <div className="position-relative rounded-top" style={{ zIndex: "1" }}>
                                         <img className="img-fluid rounded-top w-100" src={doctor.img} alt={doctor.name} />
                                     </div>
                                     <div
-                                        className="team-text position-relative text-center rounded-bottom p-4 pt-5"
+                                        className="team-text position-relative text-center rounded-bottom p-4 pt-4"
                                         style={{ backgroundColor: "rgba(206, 197, 22, 0.7)" }}
                                     >
-                                        <h4 className="mb-2" style={{ color: "rgba(39, 84, 142, 0.9)" }}>{doctor.name}</h4>
-                                        <p className="text-primary mb-0">{doctor.specialty}</p>
+                                        <h4 className="mb-2 text-secondary" >{doctor.name}</h4>
+                                        <p className=" mb-0 text-secondary" >{doctor.specialty}</p>
                                     </div>
                                 </div>
                             </div>

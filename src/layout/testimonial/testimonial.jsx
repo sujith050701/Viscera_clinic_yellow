@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import TestHead from './heading/testhead';
 
 const Testimonial = () => {
     useEffect(() => {
@@ -10,6 +9,8 @@ const Testimonial = () => {
     const [allTestimonials, setAllTestimonials] = useState([]);
     const [userImage, setUserImage] = useState(null);
     const intervalRef = useRef(null);
+
+    const isAdmin = false; // Set this based on your authentication logic
 
     const handleFeedbackChange = (event) => {
         setUserFeedback(event.target.value);
@@ -45,9 +46,13 @@ const Testimonial = () => {
     };
 
     const handleFeedbackDelete = (index) => {
-        setAllTestimonials((prevTestimonials) => 
-            prevTestimonials.filter((_, i) => i !== index)
-        );
+        if (isAdmin) { // Check if the user is an admin
+            setAllTestimonials((prevTestimonials) => 
+                prevTestimonials.filter((_, i) => i !== index)
+            );
+        } else {
+            alert("Only admins can delete feedback."); // Alert for non-admin users
+        }
     };
 
     useEffect(() => {
@@ -66,7 +71,7 @@ const Testimonial = () => {
 
     return (
         <>
-        <TestHead/>
+        
         <section className="testimonial-section" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             <div className="container">
                 <h2 className="section-title">User Feedback</h2>

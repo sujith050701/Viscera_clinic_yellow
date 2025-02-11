@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
-import AppointmentHead from "./heading/appointmenthead";
 
 function Appointment() {
     const location = useLocation();
@@ -20,7 +19,7 @@ function Appointment() {
     }, [isAppointmentPage]);
 
     const redirectToLogin = () => {
-        navigate("/login");
+        navigate("/userlogin");
     };
 
     const handleSubmit = async (e) => {
@@ -63,7 +62,7 @@ function Appointment() {
 
         try {
             const response = await axios.post(
-                "http://192.168.136.4:4001/api/appointments/create",
+                "http://192.168.165.4:4001/api/appointments/create",
                 appointmentData,
                 {
                     headers: {
@@ -94,7 +93,7 @@ function Appointment() {
     // New function to send WhatsApp message
     const sendWhatsAppMessage = async (mobile, message) => {
         try {
-            await axios.post("http://192.168.136.4/send-whatsapp", {
+            await axios.post("http://192.168.165.4/send-whatsapp", {
                 mobile,
                 message,
             });
@@ -172,7 +171,6 @@ function Appointment() {
 
             {/* Appointment Page */}
             <div style={{ color: "black" }}>
-                {isAppointmentPage && <AppointmentHead />}
                 <div
                     className="container-fluid bg-primary bg-appointment mb-5 wow fadeInUp"
                     data-wow-delay="0.1s"

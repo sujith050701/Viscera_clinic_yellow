@@ -28,7 +28,7 @@ const Auth = ({ onLoginSuccess }) => {
 
     try {
       if (isLogin) {
-        const { data } = await axios.post("http://192.168.136.4:4001/api/auth/signin", {
+        const { data } = await axios.post("http://192.168.165.4:4001/api/auth/signin", {
           email,
           password,
         });
@@ -46,7 +46,7 @@ const Auth = ({ onLoginSuccess }) => {
         setMessage("Login successful! Redirecting to User Dashboard...");
         navigate("/userdashboard");
       } else {
-        const { data } = await axios.post("http://192.168.136.4:4001/api/auth/signup", {
+        const { data } = await axios.post("http://192.168.165.4:4001/api/auth/signup", {
           email,
           password,
         });
@@ -69,7 +69,7 @@ const Auth = ({ onLoginSuccess }) => {
     }
 
     try {
-      const { data } = await axios.post("http://192.168.136.4:4001/api/auth/forgot-password", {
+      const { data } = await axios.post("http://192.168.165.4:4001/api/auth/forgot-password", {
         email,
       });
       setResetToken(data.token);
@@ -89,7 +89,7 @@ const Auth = ({ onLoginSuccess }) => {
     }
 
     try {
-      const { data } = await axios.post("http://192.168.136.4:4001/api/auth/reset-password", {
+      const { data } = await axios.post("http://192.168.165.4:4001/api/auth/reset-password", {
         token: resetToken,
         newPassword: password,
       });
@@ -178,7 +178,7 @@ const Auth = ({ onLoginSuccess }) => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <button className="auth-button" onClick={handleAuth}>
+            <button className="auth-button" onClick={handleAuth} style={{ backgroundColor: "rgba(39, 84, 142, 0.9)", color: "white" }}>
               {isLogin ? "Login" : "Sign Up"}
             </button>
             <p>

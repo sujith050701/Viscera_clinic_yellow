@@ -13,7 +13,6 @@ import {
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
-import BranchHead from "./heading/branchhead";
 
 const branches = [
   {
@@ -69,7 +68,6 @@ const HospitalBranches = () => {
 
   return (
     <>
-      {!isHomePage && <BranchHead />}
 
       {/* Page Header */}
       <Container maxWidth="lg" sx={{ py: 6 }}>

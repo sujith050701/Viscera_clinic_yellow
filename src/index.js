@@ -5,14 +5,13 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import reportWebVitals from './reportWebVitals';
 
-import Main from './component/main';
-import Dashboard from './admin/dashboard';
-import Home from './component/home';
+
+import Main1 from './main';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-      <Main/>
+     <Main1/>
     </React.StrictMode>
 );
 

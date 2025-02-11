@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import ContactHead from "./heading/contacthead";
 
 function ContactPage() {
     const [formData, setFormData] = useState({
@@ -45,37 +44,37 @@ function ContactPage() {
     return (
         <>
             <div>
-                <ContactHead />
+                
                 <div className="container-fluid py-5">
                     <div className="container">
                         <div className="row g-5">
                             <div className="col-xl-4 col-lg-6">
                                 <div className="bg-light rounded h-100 p-5">
                                     <div className="section-title">
-                                        <h5 className="position-relative d-inline-block text-primary text-uppercase" style={{ fontWeight: 'bold' }}>Contact Us</h5>
+                                        <h5 className="position-relative d-inline-block text-uppercase" style={{ fontWeight: 'bold', color: '#345da2' }}>Contact Us</h5>
                                         <h1 className="display-6 mb-4">Feel Free To Contact Us</h1>
                                     </div>
                                     <div className="d-flex align-items-center mb-2">
-                                        <i className="bi bi-geo-alt fs-1 text-primary me-3" />
+                                        <i className="bi bi-geo-alt fs-1" style={{ color: '#345da2' }} me-3 />
                                         <div className="text-start">
-                                            <h5 className="mb-0">Our Office</h5>
-                                            <span>No.29A, Vaithiyanathapuram, Ellis Nagar, SS colony, Madurai, Tamil Nadu, India - 625016</span>
+                                            <h5 className="mb-0 text-secondary">Our Office</h5>
+                                            <span className="text-primary"> No.29A, Vaithiyanathapuram, Ellis Nagar, SS colony, Madurai, Tamil Nadu, India - 625016</span>
                                         </div>
                                     </div>
                                     <div className="d-flex align-items-center mb-2">
-                                        <i className="bi bi-envelope-open fs-1 text-primary me-3" />
+                                        <i className="bi bi-envelope-open fs-1" style={{ color: '#345da2' }} me-3 />
                                         <div className="text-start" style={{ wordBreak: "break-word", overflowWrap: "break-word" }}>
-                                            <h5 className="mb-0">Email Us</h5>
-                                            <span>
+                                            <h5 className="mb-0 text-secondary">Email Us</h5>
+                                            <span className="text-primary">
                                                 visceranaturalsclinicpvtltd @gmail.com
                                             </span>
                                         </div>
                                     </div>
                                     <div className="d-flex align-items-center">
-                                        <i className="bi bi-phone-vibrate fs-1 text-primary me-3" />
+                                        <i className="bi bi-phone-vibrate fs-1" style={{ color: '#345da2' }} me-3 />
                                         <div className="text-start">
-                                            <h5 className="mb-0">Call Us</h5>
-                                            <span>+91 8925168697</span>
+                                            <h5 className="mb-0 text-secondary">Call Us</h5>
+                                            <span className="text-primary">+91 8925168697</span>
                                         </div>
                                     </div>
                                 </div>
@@ -131,9 +130,9 @@ function ContactPage() {
                                             />
                                         </div>
                                         <div className="col-12">
-                                            <button 
-                                                className="btn w-100 py-3" 
-                                                type="submit" 
+                                            <button
+                                                className="btn w-100 py-3"
+                                                type="submit"
                                                 style={{ background: 'rgba(39, 84, 142, 0.9)', border: 'none', color: 'white' }}
                                             >
                                                 Send Message
@@ -144,14 +143,16 @@ function ContactPage() {
                             </div>
                             <div className="col-xl-4 col-lg-12">
                                 <iframe
-                                    className="position-relative rounded w-100 h-100"
-                                    src="https://www.google.com/maps/d/embed?mid=1y3RCKVHRxXj_-YJigY9-5kckZhxrgVM&ehbc=2E312F&noprof=1&output=embed"
-                                    frameBorder={0}
-                                    style={{ minHeight: "400px", border: "0" }}
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5534.571279471804!2d78.09346185733364!3d9.926731595194722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00cf6f93fa5ba9%3A0x9a5c0debe4bdf3e3!2sViscera%20Natural%20care!5e0!3m2!1sen!2sin!4v1736492529782!5m2!1sen!2sin"
+                                    width="600"
+                                    height="450"
+                                    style={{ border: "0" }}
                                     allowFullScreen
-                                    aria-hidden="false"
-                                    tabIndex={0}
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade"
                                 />
+
+
                             </div>
                         </div>
                     </div>

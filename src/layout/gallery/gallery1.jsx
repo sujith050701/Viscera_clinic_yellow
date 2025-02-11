@@ -1,6 +1,5 @@
 import React,{useEffect} from "react";
 import { useLocation } from "react-router-dom";
-import GalleryHead from "./heading/galleryhead";
 
 function Gallery() {
   const location = useLocation();
@@ -10,7 +9,6 @@ function Gallery() {
   }, []);
   return (
     <>
-      {!isHomePage && <GalleryHead />}
       <div className="gallery-container">
         <div className="gallery-grid">
           <div className="gallery-item">

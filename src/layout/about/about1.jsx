@@ -2,8 +2,7 @@ import React,{useEffect} from "react";
 
 
 import { useLocation, Link } from "react-router-dom";
-import AboutHead from "./heading/abouthead";
-import Service from "./service";
+import Service from "../service/service1";
 
 function About() {
   const location = useLocation();
@@ -15,7 +14,6 @@ function About() {
   return (
     <>
       <div style={textColorStyle}>
-        {!isHomePage && <AboutHead />}
         <div className="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
           <div className="container">
             <div className="row g-5">
@@ -32,12 +30,12 @@ function About() {
                 </p>
                 <div className="row g-3">
                   <div className="col-sm-6 wow zoomIn" data-wow-delay="0.3s">
-                    <h5 className="mb-3"><i className="fa fa-check-circle text-primary me-3" />Award Winning</h5>
-                    <h5 className="mb-3"><i className="fa fa-check-circle text-primary me-3" />Professional Staff</h5>
+                    <h5 className="mb-3 text-secondary"><i className="fa fa-check-circle text-primary me-3" />Award Winning</h5>
+                    <h5 className="mb-3 text-secondary" ><i className="fa fa-check-circle text-primary me-3" />Professional Staff</h5>
                   </div>
                   <div className="col-sm-6 wow zoomIn" data-wow-delay="0.6s">
-                    <h5 className="mb-3"><i className="fa fa-check-circle text-primary me-3" />24/7 Opened</h5>
-                    <h5 className="mb-3"><i className="fa fa-check-circle text-primary me-3" />Fair Prices</h5>
+                    <h5 className="mb-3 text-secondary"><i className="fa fa-check-circle text-primary me-3" />24/7 Opened</h5>
+                    <h5 className="mb-3 text-secondary"><i className="fa fa-check-circle text-primary me-3" />Fair Prices</h5>
                   </div>
                 </div>
                 <Link 

@@ -118,7 +118,7 @@ h6,
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(9, 30, 62, .85);
+  
     z-index: 1;
 }
 
@@ -126,6 +126,8 @@ h6,
     .carousel-caption h5 {
         font-size: 14px;
         font-weight: 500 !important;
+        position: relative;
+        top: 0.2cm;
     }
 
     .carousel-caption h1 {
@@ -180,11 +182,11 @@ h6,
 }
 
 .hero-header {
-    background: linear-gradient(rgba(206, 197, 22, 0.7), rgba(190, 182, 47, 0.85)), url(../img/head.jpg) center center no-repeat;
+    background: linear-gradient(rgba(206, 197, 22, 0.658), rgba(190, 183, 47, 0.404)), url(../img/head.jpg) center center no-repeat;
     background-size: cover;
 }
 .bg-appointment {
-    background: linear-gradient(rgba(206, 197, 22, 0.7), rgba(190, 182, 47, 0.85)), url(../img/carousel-1.jpg) center center no-repeat;
+    background: linear-gradient(rgba(206, 197, 22, 0.658), rgba(190, 183, 47, 0.404)), url(../img/carousel-1.jpg) center center no-repeat;
     background-size: cover;
 }
 
@@ -303,14 +305,14 @@ offer-text {
 }
 
 .carousel-container {
-    background-color: #c3bb32;
+    background:linear-gradient(rgba(206, 197, 22, 0.658), rgba(190, 183, 47, 0.404))
 }
 .carousel-caption {
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background:linear-gradient(rgba(206, 197, 22, 0.7), rgba(190, 182, 47, 0.85)) /* Updated background color */
+    background:linear-gradient(rgba(206, 197, 22, 0.379), rgba(190, 183, 47, 0.404)) /* Updated background color */
     
 }
 /* Style for the "Appointment" button */
@@ -343,4 +345,25 @@ offer-text {
 .btn-contact:hover {
     background-color: #315ea1; /* Darker purple for hover */
     transform: scale(1.05); /* Slight scale effect for emphasis */
+}
+
+/* Add media query for mobile responsiveness */
+@media (max-width: 576px) {
+    .appointment-form {
+        padding: 15px; /* Reduce padding for smaller screens */
+    }
+
+    .form-control {
+        height: 45px; /* Adjust input height for mobile */
+    }
+
+    .btn {
+        padding: 10px; /* Adjust button padding for mobile */
+    }
+}
+.fixed-height {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
