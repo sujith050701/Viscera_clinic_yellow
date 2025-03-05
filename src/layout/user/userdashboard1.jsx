@@ -27,7 +27,7 @@ const UserDashboard = () => {
 
       try {
         const { data } = await axios.get(
-          `http://192.168.165.4:4001/api/appointments/get/${userId}`,
+          `http://192.168.148.4:4001/api/appointments/get/${userId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

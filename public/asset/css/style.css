@@ -182,11 +182,15 @@ h6,
 }
 
 .hero-header {
-    background: linear-gradient(rgba(206, 197, 22, 0.658), rgba(190, 183, 47, 0.404)), url(../img/head.jpg) center center no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.05)),
+            linear-gradient(rgba(206, 197, 22, 0.4), rgba(190, 183, 47, 0.25))
+, url(../img/head.jpg) center center no-repeat;
     background-size: cover;
 }
 .bg-appointment {
-    background: linear-gradient(rgba(206, 197, 22, 0.658), rgba(190, 183, 47, 0.404)), url(../img/carousel-1.jpg) center center no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.05)),
+            linear-gradient(rgba(206, 197, 22, 0.4), rgba(190, 183, 47, 0.25))
+, url(../img/carousel-1.jpg) center center no-repeat;
     background-size: cover;
 }
 
@@ -305,14 +309,20 @@ offer-text {
 }
 
 .carousel-container {
-    background:linear-gradient(rgba(206, 197, 22, 0.658), rgba(190, 183, 47, 0.404))
+    background: linear-gradient(rgba(206, 197, 22, 0.4), rgba(190, 183, 47, 0.3));
+
 }
 .carousel-caption {
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background:linear-gradient(rgba(206, 197, 22, 0.379), rgba(190, 183, 47, 0.404)) /* Updated background color */
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1)),
+            linear-gradient(rgba(206, 197, 22, 0.4), rgba(190, 183, 47, 0.338));
+
+    background-blend-mode: overlay;
+
+ /* Updated background color */
     
 }
 /* Style for the "Appointment" button */
@@ -366,4 +376,12 @@ offer-text {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+
+/* test css */
+
+#mail{
+    position: relative;
+    right: 2.5cm;
 }

@@ -1,116 +1,98 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from "react";
 
-const Testimonial = () => {
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [userFeedback, setUserFeedback] = useState("");
-    const [allTestimonials, setAllTestimonials] = useState([]);
-    const [userImage, setUserImage] = useState(null);
-    const intervalRef = useRef(null);
+const Testimonials = () => {
+  const [testimonials, setTestimonials] = useState([]);
+  const [name, setName] = useState("");
+  const [review, setReview] = useState("");
+  const [file, setFile] = useState(null);
 
-    const isAdmin = false; // Set this based on your authentication logic
+  useEffect(() => {
+    const storedTestimonials = JSON.parse(localStorage.getItem("testimonials")) || [];
+    setTestimonials(storedTestimonials);
+  }, []);
 
-    const handleFeedbackChange = (event) => {
-        setUserFeedback(event.target.value);
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!name || !review) return;
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      const newTestimonial = {
+        name,
+        review,
+        fileUrl: reader.result,
+        fileName: file ? file.name : "",
+        fileType: file ? file.type : "", 
+      };
+
+      const updatedTestimonials = [newTestimonial, ...testimonials];
+      setTestimonials(updatedTestimonials);
+      localStorage.setItem("testimonials", JSON.stringify(updatedTestimonials));
     };
 
-    const handleImageChange = (event) => {
-        setUserImage(event.target.files[0]);
-    };
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      reader.onloadend();
+    }
 
-    const handleFeedbackSubmit = (event) => {
-        event.preventDefault();
-        const newTestimonial = {
-            id: allTestimonials.length + 1,
-            image: userImage ? URL.createObjectURL(userImage) : "/images/default_user.jpg",
-            text: userFeedback,
-        };
-        setAllTestimonials([...allTestimonials, newTestimonial]);
-        setUserFeedback("");
-        setUserImage(null);
-        document.querySelector('input[type="file"]').value = "";
-    };
+    setName("");
+    setReview("");
+    setFile(null);
+  };
 
-    const nextTestimonial = () => {
-        setCurrentIndex((prevIndex) => 
-            allTestimonials.length > 0 ? (prevIndex === allTestimonials.length - 1 ? 0 : prevIndex + 1) : 0
-        );
-    };
+  const handleDelete = (index) => {
+    const updatedTestimonials = testimonials.filter((_, i) => i !== index);
+    setTestimonials(updatedTestimonials);
+    localStorage.setItem("testimonials", JSON.stringify(updatedTestimonials));
+  };
 
-    const prevTestimonial = () => {
-        setCurrentIndex((prevIndex) => 
-            allTestimonials.length > 0 ? (prevIndex === 0 ? allTestimonials.length - 1 : prevIndex - 1) : 0
-        );
-    };
-
-    const handleFeedbackDelete = (index) => {
-        if (isAdmin) { // Check if the user is an admin
-            setAllTestimonials((prevTestimonials) => 
-                prevTestimonials.filter((_, i) => i !== index)
-            );
-        } else {
-            alert("Only admins can delete feedback."); // Alert for non-admin users
-        }
-    };
-
-    useEffect(() => {
-        intervalRef.current = setInterval(nextTestimonial, 3000);
-
-        return () => clearInterval(intervalRef.current);
-    }, [allTestimonials]);
-
-    const handleMouseEnter = () => {
-        clearInterval(intervalRef.current);
-    };
-
-    const handleMouseLeave = () => {
-        intervalRef.current = setInterval(nextTestimonial, 3000);
-    };
-
-    return (
-        <>
-        
-        <section className="testimonial-section" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-            <div className="container">
-                <h2 className="section-title">User Feedback</h2>
-                <div className="testimonial-carousel">
-                    <button className="nav-button prev" onClick={prevTestimonial}>
-                        &lt;
-                    </button>
-                    <div className="testimonial-card">
-                        <div className="testimonial-image">
-                            <img src={allTestimonials.length > 0 && allTestimonials[currentIndex].image ? allTestimonials[currentIndex].image : '/images/default_user.jpg'} alt="User" />
-                        </div>
-                        <div className="testimonial-content">
-                            <p className="testimonial-text">
-                                "{allTestimonials.length > 0 ? allTestimonials[currentIndex].text : 'No feedback yet.'}"
-                            </p>
-                            <div className="testimonial-author">
-                                <h4>{allTestimonials.length > 0 ? allTestimonials[currentIndex].name : 'Anonymous'}</h4>
-                                <p>{allTestimonials.length > 0 ? allTestimonials[currentIndex].role : 'User Feedback'}</p>
-                            </div>
-                            <button onClick={() => handleFeedbackDelete(currentIndex)} className="delete-feedback-button">Delete Feedback</button>
-                        </div>
-                    </div>
-                    <button className="nav-button next" onClick={nextTestimonial}>
-                        &gt;
-                    </button>
-                </div>
-                <form onSubmit={handleFeedbackSubmit}>
-                    <input type="file" accept="image/*" onChange={handleImageChange} required />
-                    <textarea 
-                        value={userFeedback} 
-                        onChange={handleFeedbackChange} 
-                        placeholder="Leave your feedback here..." 
-                        required 
-                    />
-                    <button type="submit" className="btn-custom">Submit Feedback</button>
-                </form>
-            </div>
-        </section></>
-    );
+  return (
+    <div className="testimonial-container">
+      <h2 className="testimonial-title">Patient Testimonials</h2>
+      <form onSubmit={handleSubmit} className="testimonial-form">
+        <input
+          type="text"
+          placeholder="Your Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="testimonial-input"
+          required
+        />
+        <textarea
+          placeholder="Your Review"
+          value={review}
+          onChange={(e) => setReview(e.target.value)}
+          className="testimonial-textarea"
+          required
+        ></textarea>
+        <input type="file" onChange={handleFileChange} className="testimonial-file-input" />
+        <button type="submit" className="testimonial-submit-button">Submit</button>
+      </form>
+      <div className="testimonial-list">
+        {testimonials.map((t, index) => (
+          <div key={index} className="testimonial-item">
+            <h3 className="testimonial-name">{t.name}</h3>
+            <p className="testimonial-review">{t.review}</p>
+            {t.fileUrl && t.fileType && t.fileType.startsWith("image/") ? (
+              <img src={t.fileUrl} alt="Testimonial" className="testimonial-image" />
+            ) : (
+              t.fileUrl && (
+                <a href={t.fileUrl} target="_blank" rel="noopener noreferrer" className="testimonial-file-link">
+                  {t.fileName || "View Attachment"}
+                </a>
+              )
+            )}
+            {/* <button className="delete-button" onClick={() => handleDelete(index)}>Delete</button> */}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };
 
-export default Testimonial;
+export default Testimonials;

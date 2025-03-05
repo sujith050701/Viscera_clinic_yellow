@@ -62,7 +62,7 @@ function Appointment() {
 
         try {
             const response = await axios.post(
-                "http://192.168.165.4:4001/api/appointments/create",
+                "http://192.168.148.4:4001/api/appointments/create",
                 appointmentData,
                 {
                     headers: {
@@ -93,7 +93,7 @@ function Appointment() {
     // New function to send WhatsApp message
     const sendWhatsAppMessage = async (mobile, message) => {
         try {
-            await axios.post("http://192.168.165.4/send-whatsapp", {
+            await axios.post("http://192.168.148.4/send-whatsapp", {
                 mobile,
                 message,
             });

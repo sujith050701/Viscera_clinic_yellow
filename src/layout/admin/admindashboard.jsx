@@ -32,7 +32,7 @@ const Dashboard = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     axios
-      .get('http://192.168.165.4:4001/api/appointments/get')
+      .get('http://192.168.148.4:4001/api/appointments/get')
       .then((response) => {
         setAppointments(response.data.data);
         setLoading(false);
@@ -46,7 +46,7 @@ const Dashboard = () => {
   const handleDelete = (userId) => {
     if (window.confirm('Are you sure you want to delete this appointment?')) {
       axios
-        .delete(`http://192.168.165.4:4001/api/appointments/delete/${userId}`)
+        .delete(`http://192.168.148.4:4001/api/appointments/delete/${userId}`)
         .then((response) => {
           if (response.status === 200 || response.status === 204) {
             setAppointments((prevAppointments) =>
@@ -67,7 +67,7 @@ const Dashboard = () => {
   const handleDeleteAll = () => {
     if (window.confirm('Are you sure you want to delete all appointments?')) {
       axios
-        .delete('http://192.168.165.4:4001/api/appointments/delete/all')
+        .delete('http://192.168.148.4:4001/api/appointments/delete/all')
         .then((response) => {
           if (response.status === 200 || response.status === 204) {
             setAppointments([]);
@@ -105,7 +105,7 @@ const Dashboard = () => {
     const updatedAppointment = { ...editFormData, date: formattedDate };
 
     axios
-      .put(`http://192.168.165.4:4001/api/appointments/update/${editAppointment._id}`, updatedAppointment)
+      .put(`http://192.168.148.4:4001/api/appointments/update/${editAppointment._id}`, updatedAppointment)
       .then((response) => {
         setAppointments((prevAppointments) =>
           prevAppointments.map((app) =>
